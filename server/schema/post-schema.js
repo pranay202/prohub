@@ -12,7 +12,7 @@ const PostSchema = mongoose.Schema({
    },
    categories: {
       type: String,
-      required: true
+      required: false
    },
    description: {
     type: String,
@@ -25,11 +25,11 @@ const PostSchema = mongoose.Schema({
    },
    branch: {
       type: String,
-      required: true
+      required: false
    },
    year: {
       type: String,
-      required: true
+      required: false
    },
    picture: {
       type: String,
