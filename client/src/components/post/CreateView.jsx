@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
-import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button, Select, InputLabel, MenuItem, TextField} from "@material-ui/core";
+import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button, Select, InputLabel, MenuItem, TextField, useTheme, Chip, OutlinedInput, Checkbox, ListItemText} from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
+import { categoriesData } from '../../constants/data';
 
 // Fetching service from backend
 import { createPost, uploadFile } from '../../service/api';
@@ -58,13 +59,20 @@ const useStyles = makeStyles((theme) => ({
     },
     select:{
         cursor: 'pointer',
-        width: '100%',
-        // border: 'none',
-        marginTop: 20,
-        padding: '10px',
-        paddingLeft: '20px',
-        border: '2px solid blueGrey',
+        width: '33%',
+        border: 'none',
+        marginLeft: 0,
+        marginTop: 10,
+        paddingTop: 20,
+        // paddingLeft: '20px',
+        // border: '2px solid blueGrey',
 
+    },
+
+    group: {
+
+        display: 'flex',
+        flexDirection: 'row'
     }
 }));
 
@@ -78,6 +86,26 @@ const initialValues = {
     createdDate: new Date()
 }
 
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+
+function getStyles(category, CategoryName, theme) {
+  return {
+    fontWeight:
+      CategoryName.indexOf(category) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
 
 
 const CreateView = () => {
@@ -92,6 +120,19 @@ const CreateView = () => {
     
     const handleSelect = (event) => {
       setBranch(event.target.value);
+    }
+
+    const theme = useTheme();
+    const [CategoryName, setCategoryName] = React.useState([]);
+
+    const handleSelectCategory = (event) => {
+        const {
+        target: { value },
+        } = event;
+        setCategoryName(
+        // On autofill we get a stringified value.
+        typeof value === 'string' ? value.split(',') : value,
+        );
     }
     // const url = "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
     const url = post.picture ? post.picture : "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
@@ -119,7 +160,7 @@ const CreateView = () => {
 
     const savePost = async() => {
         await createPost(post);
-        history.push("/");
+        history.push("/projects/");
     }
     
     return (
@@ -157,6 +198,40 @@ const CreateView = () => {
             className={classes.textarea}   
             />
 
+            <InputLabel id="category" style={{maginTop: 50}}>Categories</InputLabel>
+                <Select
+                labelId="category"
+                id="categories"
+                inputlableprops={{
+                    shrink: true,
+                }}
+                multiple
+                value={CategoryName}
+                placeholder="Please select a category"
+                onChange={handleSelectCategory}
+                input={<OutlinedInput id="categories" label="Categories" />}
+                renderValue={(selected) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {selected.map((value) => (
+                        <Chip key={value} label={value} />
+                    ))}
+                    </Box>
+                )}
+                MenuProps={MenuProps}
+                >
+                {categoriesData.map((category) => (
+                    <MenuItem
+                    key={category}
+                    value={category}
+                    defaultValue={categoriesData[0]}
+                    style={getStyles(category, CategoryName, theme)}
+                    >
+                        <Checkbox checked={CategoryName.indexOf(category) > -1} />
+                        <ListItemText primary={category} />
+                    </MenuItem>
+                ))}
+                </Select>
+
             <TextareaAutosize 
             onChange={(e)=>handleChange(e)}
             minRows={2}
@@ -165,13 +240,18 @@ const CreateView = () => {
             className={classes.textarea}   
             />
             
+            <div className={classes.group}>
             <InputLabel id="branch" style={{marginTop: 10}}>Branch</InputLabel>
             <Select
                 labelId="branch"
                 id="branch"
                 name="branch"
                 value={branch}
+                defaultValue="CSE/IT"
                 label="branch"
+                inputlableprops={{
+                    shrink: true,
+                }}
                 onChange={(event)=>handleSelect(event)}
                 className={classes.select}
             >
@@ -183,14 +263,16 @@ const CreateView = () => {
             </Select>
 
             <TextField
-                id="outlined-number"
-                label="Number"
+                id="year"
+                label="Year"
                 type="number"
-                InputLabelProps={{
+                inputlableprops={{
                     shrink: true,
                 }}
+                defaultValue={2020}
+                className={classes.select}
             />
-
+            </div>
             <TextareaAutosize
                 onChange={(e)=>handleChange(e)}
                 minRows={10}

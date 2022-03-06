@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button,makeStyles, Table,TableRow, TableBody, TableCell, TableHead } from '@material-ui/core';
-import {categories} from "../../constants/data.js"
+import {categoriesData} from "../../constants/data.js"
 import { Link } from "react-router-dom";
 
 
@@ -28,13 +28,13 @@ const Categories = () => {
     const classes = useStyles();
     return (
         <>
-            <Link to={`/create`} className={ classes.link }><Button varient="outlined" className={ classes.create }>Create Blog</Button></Link>
+            <Link to={`/projects/create`} className={ classes.link }><Button varient="outlined" className={ classes.create }>New Project</Button></Link>
 
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow>
                         <TableCell>
-                            <Link to={'/'} className={classes.link}>
+                            <Link to={'/projects/'} className={classes.link}>
                                 All Categories
                             </Link>
                         </TableCell>
@@ -42,10 +42,10 @@ const Categories = () => {
                 </TableHead>
                 <TableBody>
                 {
-                    categories.map(category => (
+                    categoriesData.map(category => (
                         <TableRow>
                             <TableCell>
-                                <Link to={`/?category=${category}`} className={classes.link}>
+                                <Link to={`/projects/?category=${category}`} className={classes.link}>
                                     {category}
                                 </Link>
                             </TableCell>

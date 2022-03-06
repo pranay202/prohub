@@ -45,11 +45,12 @@ const Post = ({ post }) => {
             src= {url}
             alt="wrapper" className={classes.image}
             />
-            <Typography className={classes.text}>{post.category}</Typography>
             <Typography className={classes.heading}>{post.title}</Typography>
+            <Typography className={classes.text}>{post.categories}</Typography>
             <Typography className={classes.text}>{post.technology}</Typography>
             <Typography className={classes.text}>{post.branch}</Typography>
-            <Typography className={classes.text}>Author: {post.username}</Typography>
+            <Typography className={classes.text}>{post.year}</Typography>
+            <Typography className={classes.text}>Author: {post.creators}</Typography>
             <Typography className={classes.detail}>{post.description}</Typography>
         </Box>
     )

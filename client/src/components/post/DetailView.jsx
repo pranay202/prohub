@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Box, Typography, makeStyles } from "@material-ui/core";
+import { Box, Typography, makeStyles, Chip } from "@material-ui/core";
 import { Edit , Delete } from "@material-ui/icons";
 
 //service
@@ -39,13 +39,26 @@ const useStyles = makeStyles((theme) => ({
         color: '#878787',
         display: "flex",
         margin: '20px 0',
+        marginBottom:0,
         [theme.breakpoints.down('md')]: {
             display: 'block'
         }
     },
+    subHeading: {
+        color: '#878787',
+        fontSize: 20,
+        fontWeight: 300,
+        textAlign: 'center'
+    },
     link: {
         textDecoration : 'none',
         color: 'inherit'
+    },
+    description: {
+        textIndent: '4em',
+        fontSize: 17,
+        color: '#000',
+        marginTop: 5
     }
 }));
 
@@ -79,17 +92,36 @@ const DetailView = ({ match }) => {
             className={classes.image}
             />
             <Box className={classes.icons}>
-                <Link to={`/update/${post._id}`}><Edit className={classes.icon}/></Link>
+                <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
                 <Delete onClick={() => deleteBlog()} className={classes.icon} color="error"/>
             </Box>
             <Typography className={classes.heading}>{post.title}</Typography>
+            <Typography className={classes.subHeading}>Technologies Used: <span style={{color:'#000000'}}>{post.technology}</span></Typography>
+
             <Box className={classes.subheading}>
-                <Link to={`/?username=${post.username}`} className={classes.link}>
-                    <Typography>Author: {post.username}</Typography>
+                <Link to={`/projects/?categories=${post.category}`} className={classes.link}>
+                    <Typography>Categories: <Chip label={post.categories} /></Typography>
                 </Link>
                 <Typography style={{marginLeft:'auto'}}>{new Date(post.createdDate).toDateString()}</Typography>
             </Box>
-            <Typography>{post.description}</Typography>
+
+            <Box className={classes.subheading}>
+                <Link to={`/projects/?username=${post.creators}`} className={classes.link}>
+                    <Typography>Creators: <Chip label={post.creators} variant='medium'/></Typography>
+                </Link>
+            </Box>
+
+
+            <Box className={classes.subheading}>
+                <Link to={`/projects/?branch=${post.branch}`} className={classes.link}>
+                    <Typography>{post.branch}</Typography>
+                </Link>
+            </Box>
+
+            {/* <Typography className={classes.subheading}>{post.year}</Typography> */}
+
+            <Typography className={classes.subheading}>Description(Problem Statement and Solution): </Typography>
+            <Typography className={classes.description}>{post.description}</Typography>
         </Box>
         </>
     )
