@@ -53,12 +53,13 @@ Here is a working Demo : https://Prohub.herokuapp.com/
 
 ### To Contribute give the repo a Star⭐️ and Fork it.
 
-<img src ="readme_assets/images/star_and_fork.png"></img>
 
 <br>
+<img src ="readme_assets/star_fork.png"></img>
 
 ### Clone the repo.
 
+<img src ="readme_assets/clone.png"></img>
 ```
 git clone https://github.com/Pranay202/prohub.git
 ```
