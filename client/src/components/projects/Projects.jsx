@@ -6,7 +6,6 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import theme from "../../theme"
 import Categories from './Categories';
 
-//projects route
 function Projects() {
     return (
         <>
