@@ -2,7 +2,7 @@ import multer from "multer";
 import { GridFsStorage } from "multer-gridfs-storage";
 
 const storage = new GridFsStorage({
-    url: "mongodb+srv://user:Pranay2329@blogcluster.u3mtv.mongodb.net/BlogCluster?retryWrites=true&w=majority",
+    url: "mongodb+srv://user:Pranay2329@prohub.xqthg.mongodb.net/Prohub?retryWrites=true&w=majority",
     options: {
         useNewUrlParser: true,
         useUnifiedTopology: true

@@ -1,28 +1,48 @@
 import { Box } from "@material-ui/core";
 import React from "react";
 
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 // Components
 import Navbar from "./components/navbar/Navbar";
-// import Home from "./components/home/Home";
+// auth modules
+import Signup from "./components/signup";
+import Login from "./components/login";
+
+import Home from "./components/home/Home";
+import About from "./components/about/About";
+import Contact from "./components/contact/Contact";
 import DetailView from "./components/post/DetailView";
 import CreateView from "./components/post/CreateView";
 import UpdateView from "./components/post/UpdateView";
 import Projects from "./components/projects/Projects";
 
 function App() {
+
+  const user = localStorage.getItem("token");
+
+  // const [search, setSearch] = useState("");
+  // console.log(search);
+
   return (
     <>
     <BrowserRouter>
       <Navbar/>
       <Box style={{marginTop: 64}}>
-      <Switch>
-        {/* <Route exact path='/' component={home} /> */}
-        <Route exact path='/projects' component={Projects} />
-        <Route exact path='/projects/details/:id' component={DetailView} />
-        <Route exact path='/projects/create' component={CreateView} />
-        <Route exact path='/projects/update/:id' component={UpdateView} />
-      </Switch>
+    <Routes>
+			<Route path="/home" exact element={<Home />} />
+			<Route path="/signup" exact element={<Signup />} />
+			<Route path="/login" exact element={<Login />} />
+			<Route path="/" element={<Navigate replace to="/login" />} />
+
+        {/* <Route exact path='/about' component={About} /> */}
+        {/* <Route exact path='/contact' component={Contact} /> */}
+        <Route exact path='/projects' element={<Projects />} />
+        <Route exact path='/about' element={<About />} />
+        <Route exact path='/contact' element={<Contact />} />
+        <Route exact path='/projects/details/:id' element={<DetailView />} />
+        <Route exact path='/projects/create' element={<CreateView />} />
+        <Route exact path='/projects/update/:id' element={<UpdateView />} />
+      </Routes>
       </Box>
     </BrowserRouter>
    </>

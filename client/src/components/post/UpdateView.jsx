@@ -1,7 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button} from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 //service
 import { getPost, updatePost } from "../../service/api"
@@ -51,7 +51,7 @@ const initialValues = {
 const UpdateView = ({ match }) => {
     const classes = useStyles();
     const url = "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [post, setPost] = useState(initialValues);
 
@@ -70,7 +70,7 @@ const UpdateView = ({ match }) => {
 
     const updateBlog = async () => {
         await updatePost(match.params.id, post);
-        history.push(`/details/${match.params.id}`);
+        navigate(`/details/${match.params.id}`);
     }
 
     return (

@@ -2,10 +2,14 @@ import React from 'react';
 import { AppBar, Toolbar, Typography, makeStyles } from "@material-ui/core";
 import { Link } from 'react-router-dom';
 
+
 const useStyles = makeStyles({
     component: {
         background: '#ffffff',
         color: '#000000',
+        display: 'flex',
+        // justifyContent: 'space-between',
+        flexDirection:"row",
     },
 
     link: {
@@ -14,28 +18,72 @@ const useStyles = makeStyles({
     },
 
     container: {
-        justifyContent: 'center',
+        // display: 'flex',
+        // justifyContent: 'flex-start',
+        width: "30%",
         '& > *': {
             padding: 20,
             cursor: 'pointer',
         }
+    },
+    search: {
+        width: "35%",
+        // display: 'flex',
+        justifyContent:'center',        
+    },
+    searchInput: {
+        padding: 10 ,        
+    },
+    white_btn: {
+        border: "none",
+        outline: "none",
+        padding: '12px 0',
+        backgroundColor: 'white',
+        borderRadius: 20,
+        width: 180,
+        fontWeight: 'bold',
+        fontSize: 14,
+        cursor: 'pointer'
     }
 })
 
 function Navbar() {
+    const handleLogout = () => {
+		localStorage.removeItem("token");
+		window.location.reload();
+	};
+    const user = localStorage.getItem("token");
     const classes = useStyles();
     return (
         <>
         
         <AppBar className={classes.component}>
             <Toolbar className={classes.container}>
-            <Link to={'/'} className={classes.link}><Typography>Home</Typography></Link>
-            <Link to={'/projects'} className={classes.link}><Typography>Projects</Typography></Link>
-                <Typography>About</Typography>
-                <Typography>Contact</Typography>
+                <Link to={'/'} className={classes.link}><Typography>Home</Typography></Link>
+                <Link to={'/projects'} className={classes.link}><Typography>Projects</Typography></Link>
+                <Link to={'/about'} className={classes.link}><Typography>About</Typography></Link>
+                <Link to={'/contact'} className={classes.link}><Typography>Contact</Typography></Link>
+            </Toolbar>
+{/*             
+                    <SearchIconWrapper>
+                    <SearchIcon />
+                    </SearchIconWrapper> */}
+            <Toolbar className = {classes.search}>
+                    <input
+                    placeholder="Search…"
+                    className={classes.searchInput}
+                    inputprops={{ 'aria-label': 'search' }}
+                    // onChange={(e) => setSearch(e.target.value)}
+                    />
+            </Toolbar>
+
+            <Toolbar className = {classes.logout}>
+                {user && <button className={classes.white_btn} onClick={handleLogout}>
+					Logout
+				</button>
+                }
             </Toolbar>
         </AppBar>
-        
         </>
     )
 }

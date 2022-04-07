@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button, Select, InputLabel, MenuItem, TextField, useTheme, Chip, OutlinedInput, Checkbox, ListItemText} from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
 import { categoriesData } from '../../constants/data';
@@ -110,7 +110,7 @@ function getStyles(category, CategoryName, theme) {
 
 const CreateView = () => {
     const classes = useStyles();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [post, setPost] = useState(initialValues);
     const [file, setFile] = useState('');
@@ -160,7 +160,7 @@ const CreateView = () => {
 
     const savePost = async() => {
         await createPost(post);
-        history.push("/projects/");
+        navigate("/projects/");
     }
     
     return (

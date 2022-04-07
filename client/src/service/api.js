@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 //backend server running PORT
-const URL = 'http://localhost:8000';
+const URL = 'http://localhost:8080';
 
 export const createPost = async (post) => {
     try {

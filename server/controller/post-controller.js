@@ -21,7 +21,7 @@ export const getAllPosts = async (req, res) => {
         if (username) 
             posts = await Post.find({ username: username });
         else if (category) 
-            posts = await Post.find({ categories: category });
+            posts = await Post.find({ categories: categories });
         else
             posts = await Post.find({});
         res.status(200).json(posts);

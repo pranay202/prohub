@@ -1,9 +1,25 @@
-import React from 'react'
+import React from "react";
+import { Container, Row } from "react-bootstrap";
+import "./Screen.css";
 
-const Home = () => {
+function Home({children}) {
   return (
-    <div>Home</div>
-  )
+    <div className="mainback">
+      <Container>
+        <Row>
+          <div className="page">
+              <>
+                <h1 className="heading">
+                  This is homepage
+                </h1>
+                <hr />
+              </>
+            {children}
+          </div>
+        </Row>
+      </Container>
+    </div>
+  );
 }
 
-export default Home
+export default Home;

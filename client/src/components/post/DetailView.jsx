@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Box, Typography, makeStyles, Chip } from "@material-ui/core";
 import { Edit , Delete } from "@material-ui/icons";
 
@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 const DetailView = ({ match }) => {
     const classes = useStyles();
     const url = "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const [post, setPost] = useState({});
 
@@ -80,7 +80,7 @@ const DetailView = ({ match }) => {
 
     const deleteBlog  = async() => {
         await deletePost(post._id);
-        history.push('/');
+        navigate('/');
     }
 
     return (
