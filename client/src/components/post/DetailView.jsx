@@ -111,7 +111,6 @@ const DetailView = ({ match }) => {
                 </Link>
             </Box>
 
-
             <Box className={classes.subheading}>
                 <Link to={`/projects/?branch=${post.branch}`} className={classes.link}>
                     <Typography>{post.branch}</Typography>

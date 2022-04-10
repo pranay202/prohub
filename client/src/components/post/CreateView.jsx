@@ -270,6 +270,7 @@ const CreateView = () => {
                     shrink: true,
                 }}
                 defaultValue={2020}
+                value={post.year}
                 className={classes.select}
             />
             </div>
@@ -279,6 +280,7 @@ const CreateView = () => {
                 placeholder="Problem Statement and Solution..."
                 className={classes.textarea}
                 name='description' 
+                value={post.description}
             />
         </Box>
     )};
