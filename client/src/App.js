@@ -1,7 +1,7 @@
 import { Box } from "@material-ui/core";
 import React from "react";
 
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
 // Components
 import Navbar from "./components/navbar/Navbar";
 // auth modules
@@ -19,6 +19,8 @@ import Projects from "./components/projects/Projects";
 function App() {
 
   const user = localStorage.getItem("token");
+
+  // const location = useLocation();
 
   // const [search, setSearch] = useState("");
   // console.log(search);

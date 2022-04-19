@@ -99,28 +99,22 @@ const DetailView = ({ match }) => {
             <Typography className={classes.subHeading}>Technologies Used: <span style={{color:'#000000'}}>{post.technology}</span></Typography>
 
             <Box className={classes.subheading}>
-                <Link to={`/projects/?categories=${post.category}`} className={classes.link}>
+                
                     <Typography>Categories: <Chip label={post.categories} /></Typography>
-                </Link>
+                
                 <Typography style={{marginLeft:'auto'}}>{new Date(post.createdDate).toDateString()}</Typography>
             </Box>
-
-            <Box className={classes.subheading}>
-                <Link to={`/projects/?username=${post.creators}`} className={classes.link}>
-                    <Typography>Creators: <Chip label={post.creators} variant='medium'/></Typography>
-                </Link>
-            </Box>
-
-            <Box className={classes.subheading}>
-                <Link to={`/projects/?branch=${post.branch}`} className={classes.link}>
-                    <Typography>{post.branch}</Typography>
-                </Link>
-            </Box>
-
-            {/* <Typography className={classes.subheading}>{post.year}</Typography> */}
+                
+            <Typography className={classes.subheading}>{post.branch}</Typography>
+            <Typography className={classes.subheading}>{post.year}</Typography>                           
+            <Typography className={classes.subheading}>Creators: <Chip label={post.creators} variant='medium'/></Typography>
+                
 
             <Typography className={classes.subheading}>Description(Problem Statement and Solution): </Typography>
             <Typography className={classes.description}>{post.description}</Typography>
+
+            <Typography className={classes.subheading}>Code/Github Link: <span style={{color:'#000000'}}>{post.code}</span></Typography>
+            <Typography className={classes.subheading}>Demo Link: <span style={{color:'#000000'}}>{post.deployment}</span></Typography>
         </Box>
         </>
     )

@@ -1,3 +1,4 @@
+// import { number } from "joi";
 import mongoose from "mongoose";
 
 const PostSchema = mongoose.Schema({
@@ -14,27 +15,35 @@ const PostSchema = mongoose.Schema({
       type: String,
       required: false
    },
-   description: {
-    type: String,
-    required: true
-   },
    // user: {
-   creators: {
-      type: String,
-      required: true
-   },
-   branch: {
-      type: String,
-      required: false
-   },
-   year: {
-      type: String,
-      required: false
-   },
-   picture: {
-      type: String,
-      required: false
-   },
+      creators: {
+         type: String,
+         required: true
+      },
+      branch: {
+         type: String,
+         required: false
+      },
+      year: {
+         type: Number,
+         required: false
+      },
+      description: {
+       type: String,
+       required: true
+      },
+      code: {
+       type: String,
+       required: false
+      },
+      deployment: {
+       type: String,
+       required: false
+      },
+      picture: {
+         type: String,
+         required: false
+      },
    createdDate: {
     type: Date,
     required: true
