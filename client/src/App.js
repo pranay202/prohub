@@ -1,7 +1,7 @@
 import { Box } from "@material-ui/core";
 import React from "react";
 
-import { BrowserRouter, Route, Routes, Navigate, useLocation } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 // Components
 import Navbar from "./components/navbar/Navbar";
 // auth modules

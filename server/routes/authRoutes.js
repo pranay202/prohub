@@ -1,7 +1,7 @@
 import express from 'express';
 import { User } from "../schema/user.js";
 import bcrypt from "bcrypt";
-import joi from "joi";
+import Joi from "joi";
 
 const router = express.Router();
 

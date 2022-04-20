@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row } from "react-bootstrap";
+// import { Container, Row } from "react-bootstrap";
 import "./Screen.css";
 
 import {FaFacebook, FaTwitter, FaLinkedin} from "react-icons/fa";
@@ -20,17 +20,17 @@ students in the University. The information on this platform will help you in th
 codes, documentation links,etc. This will also help students 
 to know which projects are already taken up in their college.</p>
 					<div className="button">
-						<a href="">Read More</a>
+						<a href="/projects">Read More</a>
 					</div>
 				</div>
 				<div className="social">
-					<a href=""><i className="fab fa-facebook-f"><FaFacebook/></i></a>
-					<a href=""><i className="fab fa-twitter"><FaTwitter/></i></a>
-					<a href=""><i className="fab fa-instagram"><FaLinkedin/></i></a>
+					<a href="https://facebook.com/"><i className="fab fa-facebook-f"><FaFacebook/></i></a>
+					<a href="https://twitter.com/"><i className="fab fa-twitter"><FaTwitter/></i></a>
+					<a href="https://linkedin.com/"><i className="fab fa-linkedin"><FaLinkedin/></i></a>
 				</div>
 			</div>
 			<div className="image-section">
-				<img src="images/why-us.jpg" />
+				<img src="images/why-us.jpg" alt="" />
         {/* <div></div> */}
 			</div>
 		</div>

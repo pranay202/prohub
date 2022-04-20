@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import jwt from "jsonwebtoken";
-import joi from "joi";
+import Joi from "joi";
 import passwordComplexity from "joi-password-complexity";
 
 const userSchema = new mongoose.Schema({
