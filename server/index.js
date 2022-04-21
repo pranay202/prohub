@@ -8,8 +8,8 @@ import Connection from "./database/db.js";
 
 //Router
 import Router from "./routes/postRoutes.js";
-import userRoutes from "./routes/userRoutes.js";
-import authRoutes from "./routes/authRoutes.js";
+import user from "./routes/userRoutes.js";
+import auth from "./routes/authRoutes.js";
 
 import 'dotenv/config';
 
@@ -22,8 +22,8 @@ app.use(cors({
 }));
 
 app.use('/',Router);
-app.use('/api/users', userRoutes);
-app.use('/api/auth', authRoutes);
+app.use('/api/users', user);
+app.use('/api/auth', auth);
 
 const PORT = 8080;
 app.listen(PORT, () => {

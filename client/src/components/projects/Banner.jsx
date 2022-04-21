@@ -1,11 +1,11 @@
 import React from 'react';
-import { makeStyles, Box, Typography } from "@material-ui/core";
+import { makeStyles, Box } from "@material-ui/core";
 
 const useStyles = makeStyles({
     image: {
         background: `url(${'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg'}) center/55% repeat-x #000`,
         width: '100%',
-        height: '60vh',
+        height: '40vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -32,8 +32,6 @@ const Banner = () => {
     const classes = useStyles();
     return (
         <Box className={classes.image}>
-            <Typography>Prohub</Typography>
-            <Typography>One safe place for all your projects</Typography>
         </Box>
     )
 };

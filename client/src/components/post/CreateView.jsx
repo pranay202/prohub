@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button, Select, InputLabel, MenuItem, TextField, useTheme, Chip, OutlinedInput, Checkbox, ListItemText} from "@material-ui/core";
+import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button, InputLabel, TextField } from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
-import { categoriesData } from '../../constants/data';
+// import { categoriesData } from '../../constants/data';
 
 // Fetching service from backend
 import { createPost, uploadFile } from '../../service/api';
@@ -69,10 +69,17 @@ const useStyles = makeStyles((theme) => ({
 
     },
 
+    chip: {
+        width:"100%"
+    },
+
     group: {
 
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        gap:20,
+        marginTop:20    
     }
 }));
 
@@ -86,26 +93,26 @@ const initialValues = {
     createdDate: new Date()
 }
 
-const ITEM_HEIGHT = 48;
-const ITEM_PADDING_TOP = 8;
-const MenuProps = {
-  PaperProps: {
-    style: {
-      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      width: 250,
-    },
-  },
-};
+//const ITEM_HEIGHT = 48;
+//const ITEM_PADDING_TOP = 8;
+// const MenuProps = {
+//   PaperProps: {
+//     style: {
+//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+//       width: 250,
+//     },
+//   },
+// };
 
 
-function getStyles(category, CategoryName, theme) {
-  return {
-    fontWeight:
-      CategoryName.indexOf(category) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium,
-  };
-}
+// function getStyles(category, CategoryName, theme) {
+//   return {
+//     fontWeight:
+//       CategoryName.indexOf(category) === -1
+//         ? theme.typography.fontWeightRegular
+//         : theme.typography.fontWeightMedium,
+//   };
+// }
 
 
 const CreateView = () => {
@@ -116,24 +123,26 @@ const CreateView = () => {
     const [file, setFile] = useState('');
     const [image, setImage] = useState('');
     
-    const [branch, setBranch] = useState('');
+    // const [branch, setBranch] = useState('');
+
+    var currentYear = new Date().getFullYear();
     
-    const handleSelect = (event) => {
-      setBranch(event.target.value);
-    }
+    // const handleSelect = (event) => {
+    //   setBranch(event.target.value);
+    // }
 
-    const theme = useTheme();
-    const [CategoryName, setCategoryName] = React.useState([]);
+    // const theme = useTheme();
+    // const [CategoryName, setCategoryName] = React.useState([]);
 
-    const handleSelectCategory = (event) => {
-        const {
-        target: { value },
-        } = event;
-        setCategoryName(
-        // On autofill we get a stringified value.
-        typeof value === 'string' ? value.split(',') : value,
-        );
-    }
+    // const handleSelectCategory = (event) => {
+    //     const {
+    //     target: { value },
+    //     } = event;
+    //     setCategoryName(
+    //     // On autofill we get a stringified value.
+    //     typeof value === 'string' ? value.split(',') : value,
+    //     );
+    // }
     // const url = "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
     const url = post.picture ? post.picture : "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
     
@@ -198,22 +207,27 @@ const CreateView = () => {
             className={classes.textarea}   
             />
 
+            <div className={classes.group}>
+            <div>                
             <InputLabel id="category" style={{maginTop: 50}}>Categories</InputLabel>
-                <Select
+                {/* <Select
                 labelId="category"
                 id="categories"
                 inputlableprops={{
                     shrink: true,
                 }}
+                className={classes.chip}
+                style={{marginTop: 5}}
                 multiple
                 value={CategoryName}
                 placeholder="Please select a category"
+                defaultValue={categoriesData[0].selected}
                 onChange={handleSelectCategory}
                 input={<OutlinedInput id="categories" label="Categories" />}
                 renderValue={(selected) => (
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
                     {selected.map((value) => (
-                        <Chip key={value} label={value} />
+                        <Chip key={value} className={classes.chip} label={value} defaultValue={categoriesData[0].selected}/>
                     ))}
                     </Box>
                 )}
@@ -223,14 +237,75 @@ const CreateView = () => {
                     <MenuItem
                     key={category}
                     value={category}
-                    defaultValue={categoriesData[0]}
+                    defaultValue={categoriesData[0].selected}
                     style={getStyles(category, CategoryName, theme)}
                     >
                         <Checkbox checked={CategoryName.indexOf(category) > -1} />
                         <ListItemText primary={category} />
                     </MenuItem>
                 ))}
-                </Select>
+                </Select> */}
+
+                <TextField
+                labelId="category"
+                // id=""
+                name="categories"
+                value={post.categories}
+                defaultValue="Latest"
+                style={{width:"100%"}}  
+                // label="branch"
+                inputlableprops={{
+                    shrink: true,
+                }}
+                className={classes.select}
+                onChange={(e)=>handleChange(e)}
+                >
+                </TextField>
+                </div>
+
+            
+            {/* <div className={classes.group}> */}
+            <div>                
+            <InputLabel id="branch" >Branch</InputLabel>
+            <TextField
+                labelId="branch"
+                // id=""
+                name="branch"
+                value={post.branch}
+                defaultValue="CSE"
+                style={{width:"100%"}}  
+                // label="branch"
+                inputlableprops={{
+                    shrink: true,
+                }}
+                className={classes.select}
+                onChange={(e)=>handleChange(e)}
+            >
+                {/* <MenuItem value={"cse"}>CSE</MenuItem>
+                <MenuItem value={"it"}>IT</MenuItem>
+                <MenuItem value={"etc"}>ETC</MenuItem>
+                <MenuItem value={"mech"}>Mech</MenuItem>
+                <MenuItem value={"electrical"}>Electrical</MenuItem> */}
+            </TextField>
+            </div>
+
+            <div>                
+            <InputLabel id="year">Year</InputLabel>
+            <TextField
+                labelId="year"
+                // label="Year"
+                type="number"
+                inputlableprops={{
+                    shrink: true,
+                }}
+                defaultValue={currentYear}
+                value={post.year}
+                className={classes.select}
+                onChange={(e)=>handleChange(e)}
+                style={{width:"33%"}}
+            />
+            </div>
+            </div>
 
             <TextareaAutosize 
             onChange={(e)=>handleChange(e)}
@@ -239,41 +314,7 @@ const CreateView = () => {
             placeholder="Creators" 
             className={classes.textarea}   
             />
-            
-            <div className={classes.group}>
-            <InputLabel id="branch" style={{marginTop: 10}}>Branch</InputLabel>
-            <Select
-                labelId="branch"
-                id="branch"
-                name="branch"
-                value={branch}
-                defaultValue="CSE/IT"
-                label="branch"
-                inputlableprops={{
-                    shrink: true,
-                }}
-                onChange={(event)=>handleSelect(event)}
-                className={classes.select}
-            >
-                <MenuItem value={"cse"}>CSE/IT</MenuItem>
-                {/* <MenuItem value={it}>IT</MenuItem> */}
-                <MenuItem value={"etc"}>ETC</MenuItem>
-                <MenuItem value={"mech"}>Mech</MenuItem>
-                <MenuItem value={"electrical"}>Electrical</MenuItem>
-            </Select>
 
-            <TextField
-                id="year"
-                label="Year"
-                type="number"
-                inputlableprops={{
-                    shrink: true,
-                }}
-                defaultValue={2020}
-                value={post.year}
-                className={classes.select}
-            />
-            </div>
             <TextareaAutosize
                 onChange={(e)=>handleChange(e)}
                 minRows={10}
@@ -282,6 +323,43 @@ const CreateView = () => {
                 name='description' 
                 value={post.description}
             />
+            <div className={classes.group}>
+            <TextareaAutosize
+                onChange={(e)=>handleChange(e)}
+                minRows={1}
+                placeholder="Github Link"
+                className={classes.textarea}
+                name='code' 
+                value={post.code}
+            />
+
+            <TextareaAutosize
+                onChange={(e)=>handleChange(e)}
+                minRows={1}
+                placeholder="Demo Link"
+                className={classes.textarea}
+                name='deployment' 
+                value={post.deployment}
+            />
+
+            {/* <Link href="#" underline="hover"
+                onChange={(e)=>handleChange(e)}
+                placeholder="Github Link"
+                className={classes.textarea}
+                name='code' 
+                value={post.code}
+                >
+            </Link>
+
+            <Link href="#" underline="hover"
+                onChange={(e)=>handleChange(e)}
+                placeholder="Demo Link"
+                className={classes.textarea}
+                name='deployment' 
+                value={post.deployment}
+            /> */}
+
+            </div>
         </Box>
     )};
 

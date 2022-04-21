@@ -5,11 +5,12 @@ import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles({
     component: {
-        background: '#ffffff',
-        color: '#000000',
+        background: '#001010',
+        color: '#ffff',
         display: 'flex',
         // justifyContent: 'space-between',
         flexDirection:"row",
+        opacity: 0.85
     },
 
     link: {
@@ -29,35 +30,58 @@ const useStyles = makeStyles({
     search: {
         width: "35%",
         // display: 'flex',
-        justifyContent:'center',        
+        justifyContent:'center',       
     },
     searchInput: {
-        padding: 10 ,        
+        padding: 10 , 
+        borderRadius:10       
     },
     white_btn: {
         border: "none",
         outline: "none",
-        padding: '12px 0',
+        padding: '10px 0',
         backgroundColor: 'white',
         borderRadius: 20,
-        width: 180,
+        width: 90,
         fontWeight: 'bold',
         fontSize: 14,
         cursor: 'pointer'
+    },
+    logo: {
+        marginLeft: 10,
+        paddingLeft: 10,
+        marginTop: 5,
+    },
+    first: {
+        color: "#fff",
+        fontSize: 35,
+        fontWeight: 600,
+    },
+    span: {
+        color: "crimson",
+        transition: "all 0.3s ease",
+        // color: "white",   
     }
-})
+});
 
 function Navbar() {
     const handleLogout = () => {
 		localStorage.removeItem("token");
-		window.location.reload();
+		window.location.reload("/login");
+        // window.location("/");
 	};
+    const handleLogin = () => {
+        window.location("/login");
+    }
     const user = localStorage.getItem("token");
     const classes = useStyles();
     return (
         <>
         
         <AppBar className={classes.component}>
+            <div className={classes.logo}>
+                <a className={classes.first} href="/home">Pro<span className={classes.span}>Hub</span></a>
+            </div>
             <Toolbar className={classes.container}>
                 <Link to={'/'} className={classes.link}><Typography>Home</Typography></Link>
                 <Link to={'/projects'} className={classes.link}><Typography>Projects</Typography></Link>
@@ -78,9 +102,11 @@ function Navbar() {
             </Toolbar>
 
             <Toolbar className = {classes.logout}>
-                {user && <button className={classes.white_btn} onClick={handleLogout}>
-					Logout
-				</button>
+                {user ? <Link to={"/login"}><button className={classes.white_btn} onClick={handleLogout}>
+					                            Logout
+				                            </button>
+                        </Link>
+                      : <Link to={'/login'}><button className={classes.white_btn} onClick={handleLogin}>Login</button></Link>
                 }
             </Toolbar>
         </AppBar>
