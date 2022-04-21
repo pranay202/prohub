@@ -67,7 +67,8 @@ const useStyles = makeStyles({
 function Navbar() {
     const handleLogout = () => {
 		localStorage.removeItem("token");
-		window.location.reload();
+		window.location.reload("/login");
+        // window.location("/");
 	};
     const handleLogin = () => {
         window.location("/login");
@@ -101,9 +102,10 @@ function Navbar() {
             </Toolbar>
 
             <Toolbar className = {classes.logout}>
-                {user ? <button className={classes.white_btn} onClick={handleLogout}>
-					Logout
-				</button>
+                {user ? <Link to={"/login"}><button className={classes.white_btn} onClick={handleLogout}>
+					                            Logout
+				                            </button>
+                        </Link>
                       : <Link to={'/login'}><button className={classes.white_btn} onClick={handleLogin}>Login</button></Link>
                 }
             </Toolbar>

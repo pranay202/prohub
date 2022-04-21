@@ -83,6 +83,8 @@ const DetailView = ({ match }) => {
         navigate('/');
     }
 
+    // const user = localStorage.getItem("token");
+
     return (
         <>
         <Box className={classes.container}>
@@ -91,6 +93,10 @@ const DetailView = ({ match }) => {
             alt="Detailed Post"
             className={classes.image}
             />
+            {/* {user && <Box className={classes.icons}>
+                <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
+                <Delete onClick={() => deleteBlog()} className={classes.icon} color="error"/>
+            </Box>} */}
             <Box className={classes.icons}>
                 <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
                 <Delete onClick={() => deleteBlog()} className={classes.icon} color="error"/>
@@ -113,8 +119,8 @@ const DetailView = ({ match }) => {
             <Typography className={classes.subheading}>Description(Problem Statement and Solution): </Typography>
             <Typography className={classes.description}>{post.description}</Typography>
 
-            <Typography className={classes.subheading}>Code/Github Link: <span style={{color:'#000000'}}>{post.code}</span></Typography>
-            <Typography className={classes.subheading}>Demo Link: <span style={{color:'#000000'}}>{post.deployment}</span></Typography>
+            <Typography className={classes.subheading}>Code/Github Link: <span href={post.code} style={{color:'#000000'}}>{post.code}</span></Typography>
+            <Typography className={classes.subheading}>Demo Link: <span href={post.deployment} style={{color:'#000000'}}>{post.deployment}</span></Typography>
         </Box>
         </>
     )

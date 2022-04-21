@@ -67,7 +67,7 @@ const Post = ({ post }) => {
       <Typography className={classes.text}>
         Creators: {post.creators}
       </Typography>
-      <Typography className={classes.detail} numberOfLines={1} ellipsizeMode="tail">
+      <Typography className={classes.detail} numberoflines={1} ellipsizemode="tail">
         {post.description}
       </Typography>
     </Box>

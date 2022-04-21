@@ -26,9 +26,11 @@ const useStyles = makeStyles({
 
 const Categories = () => {
     const classes = useStyles();
+    const user = localStorage.getItem("token");
     return (
         <>
-            <Link to={`/projects/create`} className={ classes.link }><Button varient="outlined" className={ classes.create }>New Project</Button></Link>
+            {user && <Link to={`/projects/create`} className={ classes.link }><Button varient="outlined" className={ classes.create }>New Project</Button></Link> }
+            {/* <Link to={`/projects/create`} className={ classes.link }><Button varient="outlined" className={ classes.create }>New Project</Button></Link> */}
 
             <Table className={classes.table}>
                 <TableHead>

@@ -18,7 +18,7 @@ import Projects from "./components/projects/Projects";
 
 function App() {
 
-  const user = localStorage.getItem("token");
+  // const user = localStorage.getItem("token");
 
   // const location = useLocation();
 

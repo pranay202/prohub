@@ -1,13 +1,12 @@
 import React from "react";
-import { Container } from "react-bootstrap";
 import "./Screen.css";
 
 function Home() {
   
   return (
+    <>
 
-    // <h1>This is home page</h1>
-    <Container>
+     {/* <h1>This is home page</h1> */}
 
     {/* <nav className="navbar">
       <div className="max-width">
@@ -26,7 +25,6 @@ function Home() {
         </div>
       </div>
     </nav> */}
-
     <section className="home" id="home">
         <div className="max-width">
             <div className="home-content">
@@ -37,7 +35,7 @@ function Home() {
             </div>
         </div>
     </section>
-    </Container>
+    </>
   );
 }
 
