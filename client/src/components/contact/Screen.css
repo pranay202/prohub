@@ -163,17 +163,17 @@ body::before{
 } */
 
 
-.contact .content h2 { 
+.contact .content h1 { 
   background-image: linear-gradient(
     350deg,
-    #231557 0%,
-    #44107a 29%,
+    #231557 20%,
+    #44107a 20%,
     #ff1361 67%,
     #fff800 100%
     );
     background-size: auto auto;
     background-clip: border-box;
-    background-size: 200% auto;
+    /* background-size: 200% auto; */
     color: #fff;
     background-clip: text;
     text-fill-color: transparent;
@@ -182,7 +182,7 @@ body::before{
     /* animation: textclip 2s linear infinite; */
     display: inline-block;
       /* font-size: 10px; */
-    font-size: 30px;
+    /* font-size: 30px; */
     margin-top: 0;
     font-weight: "900";
 }

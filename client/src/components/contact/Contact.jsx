@@ -10,7 +10,7 @@ function Contact() {
               <>
               <section className="contact">
                 <div className="content">
-                    <h2>Contact Us</h2>
+                    <h1>CONTACT US</h1>
                     <p>If you have any queries about provided details, we are here to help you. Here's how to get in touch.</p>
                 </div>
 

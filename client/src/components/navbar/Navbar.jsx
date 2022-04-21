@@ -1,7 +1,7 @@
 import React from 'react';
 import { AppBar, Toolbar, Typography, makeStyles } from "@material-ui/core";
-import { Link } from 'react-router-dom';
-
+import { Link, useNavigate } from 'react-router-dom';
+import Loading from "../Loading";
 
 const useStyles = makeStyles({
     component: {
@@ -45,7 +45,8 @@ const useStyles = makeStyles({
         width: 90,
         fontWeight: 'bold',
         fontSize: 14,
-        cursor: 'pointer'
+        cursor: 'pointer',
+        color: 'crimson'
     },
     logo: {
         marginLeft: 10,
@@ -55,20 +56,24 @@ const useStyles = makeStyles({
     first: {
         color: "#fff",
         fontSize: 35,
-        fontWeight: 600,
+        fontWeight:500
     },
     span: {
         color: "crimson",
         transition: "all 0.3s ease",
+        fontWeight: 800,
         // color: "white",   
     }
 });
 
 function Navbar() {
-    const handleLogout = () => {
+
+    const navigate = useNavigate();
+
+    const handleLogout = async () => {
 		localStorage.removeItem("token");
-		window.location.reload("/login");
-        // window.location("/");
+		window.location.reload();
+        await navigate("/login");
 	};
     const handleLogin = () => {
         window.location("/login");
@@ -83,8 +88,8 @@ function Navbar() {
                 <a className={classes.first} href="/home">Pro<span className={classes.span}>Hub</span></a>
             </div>
             <Toolbar className={classes.container}>
-                <Link to={'/'} className={classes.link}><Typography>Home</Typography></Link>
-                <Link to={'/projects'} className={classes.link}><Typography>Projects</Typography></Link>
+                {Loading && <Link to={'/'} className={classes.link}><Typography>Home</Typography></Link>}
+                {Loading &&  <Link to={'/projects'} className={classes.link}><Typography>Projects</Typography></Link>}
                 <Link to={'/about'} className={classes.link}><Typography>About</Typography></Link>
                 <Link to={'/contact'} className={classes.link}><Typography>Contact</Typography></Link>
             </Toolbar>
