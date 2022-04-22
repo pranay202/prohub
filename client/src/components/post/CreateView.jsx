@@ -80,6 +80,16 @@ const useStyles = makeStyles((theme) => ({
         justifyContent: 'space-between',
         gap:20,
         marginTop:20    
+    },
+    error_msg: {
+        width: 370,
+        padding: 15,
+        margin: "5px 0px",
+        fontSize: 14,
+        backgroundColor: "#f34646",
+        color: "#fff",
+        borderRadius: 5,
+        textAlign: "center"
     }
 }));
 
@@ -122,6 +132,7 @@ const CreateView = () => {
     const [post, setPost] = useState(initialValues);
     const [file, setFile] = useState('');
     const [image, setImage] = useState('');
+    const [error, setError] = useState('');
     
     // const [branch, setBranch] = useState('');
 
@@ -168,8 +179,18 @@ const CreateView = () => {
     }
 
     const savePost = async() => {
-        await createPost(post);
-        navigate("/projects/");
+        try{
+            await createPost(post);
+            navigate("/projects/");
+        } catch(error){
+            if (
+				error.response &&
+				error.response.status >= 400 &&
+				error.response.status <= 500
+			) {
+				setError(error.response.data.message);
+			}
+        }
     }
     
     return (
@@ -180,7 +201,8 @@ const CreateView = () => {
             className={classes.image}
             />
 
-            <FormControl className={classes.title}>
+            <FormControl>
+            <div className={classes.title}>
                 <label htmlFor="fileInput">
                     <AddCircle className={classes.addIcon} fontSize="large" color="action" />
                 </label>
@@ -196,8 +218,11 @@ const CreateView = () => {
                 placeholder="Title" 
                 className={classes.textfield} 
                 />
+                
+                {error && <div className={classes.error_msg}>{error}</div>}
                 <Button onClick={() => savePost()} variant="contained" style={{ backgroundColor: '#474', color: 'white'}}>Publish</Button>
-            </FormControl>
+            </div>
+        </FormControl>
 
             <TextareaAutosize 
             onChange={(e)=>handleChange(e)}
@@ -300,6 +325,7 @@ const CreateView = () => {
                 }}
                 defaultValue={currentYear}
                 value={post.year}
+                name="year"
                 className={classes.select}
                 onChange={(e)=>handleChange(e)}
                 style={{width:"33%"}}

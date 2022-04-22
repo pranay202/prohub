@@ -195,7 +195,7 @@ body::before{
   align-items:center;
   justify-content: center;
   flex-direction: column;
-  background: url(bg.jpg);
+  background: url("../images/bg.jpg");
   object-fit: cover;
   background-size: cover;
   text-shadow: #000;
@@ -215,7 +215,7 @@ body::before{
 }
 
 .contact .content p {
-  font-weight:300;
+  font-weight:500;
   color: #fff;
 
 }

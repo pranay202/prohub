@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./styles.module.css";
+import Loading from "../Loading";
 
 const Signup = () => {
 	const [data, setData] = useState({
@@ -40,11 +41,11 @@ const Signup = () => {
 			<div className={styles.signup_form_container}>
 				<div className={styles.left}>	
 					<h1>Welcome Back</h1>
-					<Link to="/login">
+					{Loading && <Link to="/login">
 						<button type="button" className={styles.white_btn}>
 							Sign In
 						</button>
-					</Link>
+					</Link> }
 				</div>
 				<div className={styles.right}>
 					<form className={styles.form_container} onSubmit={handleSubmit}>

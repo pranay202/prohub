@@ -83,7 +83,7 @@ const DetailView = ({ match }) => {
         navigate('/');
     }
 
-    // const user = localStorage.getItem("token");
+    const user = localStorage.getItem("token");
 
     return (
         <>
@@ -93,14 +93,14 @@ const DetailView = ({ match }) => {
             alt="Detailed Post"
             className={classes.image}
             />
-            {/* {user && <Box className={classes.icons}>
+            {user && <Box className={classes.icons}>
                 <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
                 <Delete onClick={() => deleteBlog()} className={classes.icon} color="error"/>
-            </Box>} */}
-            <Box className={classes.icons}>
+            </Box>}
+            {/* <Box className={classes.icons}>
                 <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
                 <Delete onClick={() => deleteBlog()} className={classes.icon} color="error"/>
-            </Box>
+            </Box> */}
             <Typography className={classes.heading}>{post.title}</Typography>
             <Typography className={classes.subHeading}>Technologies Used: <span style={{color:'#000000'}}>{post.technology}</span></Typography>
 

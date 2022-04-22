@@ -1,8 +1,15 @@
 import React from "react";
+import {useTypewriter, Cursor} from "react-simple-typewriter";
 import "./Screen.css";
 
 function Home() {
   
+  const {text} = useTypewriter({
+    words: ['The Project Library','For Students & Faculty.'],
+    loop: 0, // Infinit
+  });
+
+
   return (
     <>
 
@@ -29,8 +36,8 @@ function Home() {
         <div className="max-width">
             <div className="home-content">
                 <div className="text-1">Welcome to,</div>
-                <div className="text-2">ProHub</div>
-                <div className="text-3">The Project Library</div>
+                <h1 className="text-2">ProHub</h1>
+                <div className="text-3">{text} <Cursor /></div>
                 <a href="/projects">Explore</a>
             </div>
         </div>
