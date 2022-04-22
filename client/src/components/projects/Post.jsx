@@ -3,7 +3,7 @@ import { Box, Typography, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   container: {
-    height: "auto",
+    height: "400px",
     margin: 10,
     borderRadius: 10,
     border: "1px solid #d3cede",

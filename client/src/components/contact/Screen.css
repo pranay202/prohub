@@ -163,17 +163,17 @@ body::before{
 } */
 
 
-.contact .content h1 { 
+.contact .content h2 { 
   background-image: linear-gradient(
     350deg,
-    #231557 20%,
-    #44107a 20%,
+    #231557 0%,
+    #44107a 29%,
     #ff1361 67%,
     #fff800 100%
     );
     background-size: auto auto;
     background-clip: border-box;
-    /* background-size: 200% auto; */
+    background-size: 200% auto;
     color: #fff;
     background-clip: text;
     text-fill-color: transparent;
@@ -182,7 +182,7 @@ body::before{
     /* animation: textclip 2s linear infinite; */
     display: inline-block;
       /* font-size: 10px; */
-    /* font-size: 30px; */
+    font-size: 30px;
     margin-top: 0;
     font-weight: "900";
 }
@@ -195,7 +195,7 @@ body::before{
   align-items:center;
   justify-content: center;
   flex-direction: column;
-  background: url(bg.jpg);
+  background: url("../images/bg.jpg");
   object-fit: cover;
   background-size: cover;
   text-shadow: #000;
@@ -215,7 +215,7 @@ body::before{
 }
 
 .contact .content p {
-  font-weight:300;
+  font-weight:500;
   color: #fff;
 
 }

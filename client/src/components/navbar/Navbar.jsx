@@ -28,7 +28,7 @@ const useStyles = makeStyles({
         }
     },
     search: {
-        width: "35%",
+        width: "45%",
         // display: 'flex',
         justifyContent:'center',       
     },

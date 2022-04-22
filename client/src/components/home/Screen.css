@@ -76,7 +76,7 @@
 
 .home{
   display: flex;
-  background: url("bg.svg") no-repeat center;
+  background: url("../images/bg.svg") no-repeat center;
   height: 100vh;
   color: #fff;
   min-height: 500px;

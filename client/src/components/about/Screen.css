@@ -8,17 +8,31 @@
 .section{
 	width: 100%;
 	min-height: 100vh;
-	background-color: #ddd;
+	background: url("../images/bg1.jpg") no-repeat center;
+	opacity: 0.95;
+	height: 100vh;
+	background-color: rgb(8, 8, 8);
+	min-height: 500px;
+  background-size: cover;
+  background-attachment: fixed;
+  /* padding-left: 50px; */
+ 
 }
 .container{
 	width: 80%;
-	display: block;
+	/* display: block; */
 	margin:auto;
+	/* margin-left: 0%; */
 	padding-top: 100px;
+	/* padding-left: 0px; */
+	float: right;
+	
 }
 .content-section{
 	float: left;
 	width: 55%;
+	padding-right: 5px;
+
 }
 .image-section{
 	float: right;
@@ -34,14 +48,18 @@
 }
 .content-section .content h3{
 	margin-top: 20px;
-	color:#5d5d5d;
+	color: #fff;
 	font-size: 21px;
+	letter-spacing: 0.09em;
 }
 .content-section .content p{
 	margin-top: 10px;
 	font-family: sans-serif;
 	font-size: 18px;
 	line-height: 1.5;
+	color: #fff;
+	text-align: left;
+	letter-spacing: 0.05em;
 }
 .content-section .content .button{
 	margin-top: 30px;

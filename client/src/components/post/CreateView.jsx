@@ -222,6 +222,7 @@ const CreateView = () => {
                 {error && <div className={classes.error_msg}>{error}</div>}
                 <Button onClick={() => savePost()} variant="contained" style={{ backgroundColor: '#474', color: 'white'}}>Publish</Button>
             </div>
+        </FormControl>
 
             <TextareaAutosize 
             onChange={(e)=>handleChange(e)}
@@ -324,6 +325,7 @@ const CreateView = () => {
                 }}
                 defaultValue={currentYear}
                 value={post.year}
+                name="year"
                 className={classes.select}
                 onChange={(e)=>handleChange(e)}
                 style={{width:"33%"}}
@@ -384,7 +386,6 @@ const CreateView = () => {
             /> */}
 
             </div>
-            </FormControl>
         </Box>
     )};
 

@@ -18,7 +18,7 @@ import Projects from "./components/projects/Projects";
 
 function App() {
 
-  // const user = localStorage.getItem("token");
+  const user = localStorage.getItem("token");
 
   // const location = useLocation();
 
@@ -34,7 +34,9 @@ function App() {
 			<Route path="/home" exact element={<Home />} />
 			<Route path="/signup" exact element={<Signup />} />
 			<Route path="/login" exact element={<Login />} />
-			<Route path="/" element={<Navigate replace to="/login" />} />
+			{!user ? <Route path="/" element={<Navigate replace to="/login" />} />
+             : <Route path="/" element={<Navigate replace to="/home" />} />
+      }
 
         {/* <Route exact path='/about' component={About} /> */}
         {/* <Route exact path='/contact' component={Contact} /> */}
