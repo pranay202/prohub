@@ -23,6 +23,7 @@ export const getAllPosts = async (param) => {
 export const getPost = async (id) => {
   try {
     let response = await axios.get(`${URL}/post/${id}`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log("Error while calling getPost API",error);
@@ -52,3 +53,22 @@ export const uploadFile = async (data) => {
     console.log("Error while calling uploading the image",error);
   }
 }
+
+export const filterPost = (searchkey, category) => async (dispatch, param) => {
+  let filteredPost;
+  dispatch({ type: "GET_POSTS_REQUEST" });
+  try {
+    const res = await axios.get(`${URL}/posts${param}`);
+    filteredPost = res.data.filter((post) =>
+      post.name.toLowerCase().includes(searchkey)
+    );
+    if (category !== "all") {
+      filteredPost = res.data.filter(
+        (post) => post.categories.toLowerCase() === category
+      );
+    }
+    dispatch({ type: "GET_POSTS_SUCCESS", payload: filteredPost });
+  } catch (error) {
+    dispatch({ type: "GET_POSTS_FAIL", payload: error });
+  }
+};

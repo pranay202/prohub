@@ -15,13 +15,22 @@ export const createPost = async(request, response) => {
 
 export const getAllPosts = async (req, res) => {
     let username = req.query.username;
-    let category = req.query.category;
+    let category = req.query.categories;
+    let years = req.query.year;
+    let branches = req.query.branch;
+    let miniMajor = req.query.mini;
     let posts;
     try {
         if (username) 
             posts = await Post.find({ username: username });
         else if (category) 
-            posts = await Post.find({ categories: categories });
+            posts = await Post.find({ categories: category });
+        else if (years) 
+            posts = await Post.find({ year: years });
+        else if (branches) 
+            posts = await Post.find({ branch: branches });
+        else if (miniMajor) 
+            posts = await Post.find({ mini: miniMajor });
         else
             posts = await Post.find({});
         res.status(200).json(posts);
