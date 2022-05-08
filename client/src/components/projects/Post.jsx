@@ -3,44 +3,62 @@ import { Box, Typography, makeStyles } from "@material-ui/core";
 
 const useStyles = makeStyles({
   container: {
-    height: "400px",
+    height: "300px",
     margin: 10,
     borderRadius: 10,
     border: "1px solid #d3cede",
     display: "flex",
-    alignItems: "center",
+    // justifyContent: "space-between",
     flexDirection: "column",
+    // alignItems: "stretch",
     "& > *": {
       padding: "0px 0px 5px 0px",
     },
   },
-  image: {
-    height: 150,
-    width: "100%",
-    objectFit: "cover",
-    borderRadius: "11px 11px 0 0",
+
+  imageContainer: {
+    position: "relative"
   },
+    image: {
+      height: 150,
+      width: "100%",
+      objectFit: "cover",
+      borderRadius: "11px 11px 0 0",
+    },
+    mini: {
+      backgroundColor:"#e39",
+      padding:5,
+      color: "white",
+      fontSize: 10,
+      fontWeight: "bold",
+      position: "absolute",
+      margin: "12px -294.2px",
+      borderRadius: "0 10px 10px 0",
+    },
+
   text: {
     color: "#878787",
     fontSize: 12,
-    paddingLeft: "8px",
+    padding: "2px 0",
   },
   heading: {
-    fontSize: 18,
+    fontSize: 15,
     fontWeight: 600,
-    textAlign: "center",
+    // textAlign: "center",
   },
   detail: {
     fontSize: 14,
+    marginTop: "10px",
     workBreak: "break-word",
-    paddingLeft:8,
+  },
+  details: {
+    padding: "0px 10px"
   },
   group: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-between",
     gap: 20,
-    marginTop: 20,
   },
 });
 
@@ -50,7 +68,11 @@ const Post = ({ post }) => {
 
   return (
     <Box className={classes.container}>
+    <div className={classes.imgContainer}>
       <img src={url} alt="wrapper" className={classes.image} />
+      <span className={classes.mini}>{post.mini}</span>
+    </div>
+      <Box className={classes.details}>
       <Typography className={classes.heading}>{post.title}</Typography>
       <div className={classes.group}>
         <Typography className={classes.text}>{post.categories}</Typography>
@@ -62,12 +84,13 @@ const Post = ({ post }) => {
         <Typography className={classes.text}>{post.year}</Typography>
       </div>
 
-      <Typography className={classes.text}>
+      {/* <Typography className={classes.text}>
         Creators: {post.creators}
-      </Typography>
+      </Typography> */}
       <Typography className={classes.detail} numberoflines={1} ellipsizemode="tail">
         {post.description}
       </Typography>
+      </Box>
     </Box>
   );
 };

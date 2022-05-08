@@ -1,5 +1,5 @@
 import React, { useState, useEffect }from 'react';
-import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button} from "@material-ui/core";
+import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button, TextField, InputLabel} from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
 import { useNavigate } from 'react-router-dom';
 
@@ -96,14 +96,185 @@ const UpdateView = ({ match }) => {
                 <Button onClick={() => updateBlog()} variant="contained" style={{ backgroundColor: '#423458', color: 'white'}}>Update</Button>
             </FormControl>
 
+
+            
+            <TextareaAutosize 
+            onChange={(e)=>handleChange(e)}
+            minRows={2}
+            name='technology' 
+            placeholder="Technologies Used" 
+            className={classes.textarea}   
+            />
+
+            <div className={classes.group}>
+            <div>                
+            <InputLabel id="category" style={{maginTop: 50}}>Categories</InputLabel>
+                {/* <Select
+                labelId="category"
+                id="categories"
+                inputlableprops={{
+                    shrink: true,
+                }}
+                className={classes.chip}
+                style={{marginTop: 5}}
+                multiple
+                value={CategoryName}
+                placeholder="Please select a category"
+                defaultValue={categoriesData[0].selected}
+                onChange={handleSelectCategory}
+                input={<OutlinedInput id="categories" label="Categories" />}
+                renderValue={(selected) => (
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {selected.map((value) => (
+                        <Chip key={value} className={classes.chip} label={value} defaultValue={categoriesData[0].selected}/>
+                    ))}
+                    </Box>
+                )}
+                MenuProps={MenuProps}
+                >
+                {categoriesData.map((category) => (
+                    <MenuItem
+                    key={category}
+                    value={category}
+                    defaultValue={categoriesData[0].selected}
+                    style={getStyles(category, CategoryName, theme)}
+                    >
+                        <Checkbox checked={CategoryName.indexOf(category) > -1} />
+                        <ListItemText primary={category} />
+                    </MenuItem>
+                ))}
+                </Select> */}
+
+                <TextField
+                labelId="category"
+                // id=""
+                name="categories"
+                value={post.categories}
+                style={{width:"100%"}}  
+                // label="branch"
+                inputlableprops={{
+                    shrink: true,
+                }}
+                className={classes.select}
+                onChange={(e)=>handleChange(e)}
+                >
+                </TextField>
+                </div>
+
+                <div>                
+            <InputLabel id="mini" >Project Type</InputLabel>
+            <TextField
+                labelid="mini"
+                // id=""
+                name="mini"
+                value={post.mini}
+                defaultValue="Mini"
+                style={{width:"100%"}}  
+                inputlableprops={{
+                    shrink: true,
+                }}
+                className={classes.select}
+                onChange={(e)=>handleChange(e)}
+            >
+            </TextField>
+            </div>
+            
+            {/* <div className={classes.group}> */}
+            <div>                
+            <InputLabel id="branch" >Branch</InputLabel>
+            <TextField
+                labelId="branch"
+                // id=""
+                name="branch"
+                value={post.branch}
+                style={{width:"100%"}}  
+                // label="branch"
+                inputlableprops={{
+                    shrink: true,
+                }}
+                className={classes.select}
+                onChange={(e)=>handleChange(e)}
+            >
+                {/* <MenuItem value={"cse"}>CSE</MenuItem>
+                <MenuItem value={"it"}>IT</MenuItem>
+                <MenuItem value={"etc"}>ETC</MenuItem>
+                <MenuItem value={"mech"}>Mech</MenuItem>
+                <MenuItem value={"electrical"}>Electrical</MenuItem> */}
+            </TextField>
+            </div>
+
+            <div>                
+            <InputLabel id="year">Year</InputLabel>
+            <TextField
+                labelId="year"
+                // label="Year"
+                type="number"
+                inputlableprops={{
+                    shrink: true,
+                }}
+                value={post.year}
+                name="year"
+                className={classes.select}
+                onChange={(e)=>handleChange(e)}
+                style={{width:"33%"}}
+            />
+            </div>
+            </div>
+
+            <TextareaAutosize 
+            onChange={(e)=>handleChange(e)}
+            minRows={2}
+            name='creators' 
+            placeholder="Creators" 
+            className={classes.textarea}   
+            />
+
             <TextareaAutosize
                 onChange={(e)=>handleChange(e)}
-                rowsMin={5}
-                placeholder="Tell your story..."
+                minRows={5}
+                placeholder="Project Description"
                 className={classes.textarea}
                 name='description' 
                 value={post.description}
             />
+            <div className={classes.group}>
+            <TextareaAutosize
+                onChange={(e)=>handleChange(e)}
+                minRows={1}
+                placeholder="Github Link"
+                className={classes.textarea}
+                name='code' 
+                value={post.code}
+            />
+
+            <TextareaAutosize
+                onChange={(e)=>handleChange(e)}
+                minRows={1}
+                placeholder="Demo Link"
+                className={classes.textarea}
+                name='deployment' 
+                value={post.deployment}
+            />
+
+            {/* <Link href="#" underline="hover"
+                onChange={(e)=>handleChange(e)}
+                placeholder="Github Link"
+                className={classes.textarea}
+                name='code' 
+                value={post.code}
+                >
+            </Link>
+
+            <Link href="#" underline="hover"
+                onChange={(e)=>handleChange(e)}
+                placeholder="Demo Link"
+                className={classes.textarea}
+                name='deployment' 
+                value={post.deployment}
+            /> */}
+
+            </div>
+
         </Box>
     )
 };

@@ -28,6 +28,10 @@ const PostSchema = mongoose.Schema({
          type: Number,
          required: false
       },
+      mini:{
+         type: String,
+         required: true
+      },
       description: {
        type: String,
        required: true

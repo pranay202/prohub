@@ -1,7 +1,7 @@
 import grid from "gridfs-stream";
 import mongoose from "mongoose";
 
-const url = "http://localhost:8000";
+const url = "http://localhost:8080";
 let gfs;
 
 const conn = mongoose.connection;
@@ -33,7 +33,7 @@ export const uploadImage = async (request, response) => {
 
 export const getImage = async (request, response) => {
     try {
-       const file = await axios(gfs.files.findOne({ filename: request.params.filename })); 
+       const file = await gfs.files.findOne({ filename: request.params.filename }); 
        const readStream = gfs.createReadStream(file.filename);
        readStream.pipe(response);
     } catch (error) {

@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {useNavigate} from 'react-router-dom';
-import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button, InputLabel, TextField } from "@material-ui/core";
+import {useLocation, useNavigate} from 'react-router-dom';
+import { Box, makeStyles, FormControl, TextareaAutosize, Button, InputLabel, TextField, InputBase } from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
 // import { categoriesData } from '../../constants/data';
 
@@ -26,12 +26,16 @@ const useStyles = makeStyles((theme) => ({
     title: {
         marginTop: 10,
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
     },
     textfield: {
         flex: 1,
         margin: '0 30px',
         fontSize: 25,
+        // paddingRight: '850px',
+        // width: '100%',
+        border:"none",
+        outline: 'none',
     },
     textarea: {
         width: '100%',
@@ -128,6 +132,7 @@ const initialValues = {
 const CreateView = () => {
     const classes = useStyles();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [post, setPost] = useState(initialValues);
     const [file, setFile] = useState('');
@@ -167,11 +172,14 @@ const CreateView = () => {
 
                 const image = await uploadFile(data);
                 post.picture = image.data;
-                setImage(image.data);
+                setImage(post.picture);
                 console.log(post.picture);
             }
         }
         getImage();
+        post.categories = location.search?.split('=')[1] || 'All'
+        console.log(post.picture);
+        console.log(file);
     },[file])
     
     const handleChange = (e) => {
@@ -215,12 +223,12 @@ const CreateView = () => {
                 <InputBase 
                 onChange={(e)=>handleChange(e)}
                 name='title' 
-                placeholder="Title" 
+                placeholder="Title"
                 className={classes.textfield} 
                 />
                 
                 {error && <div className={classes.error_msg}>{error}</div>}
-                <Button onClick={() => savePost()} variant="contained" style={{ backgroundColor: '#474', color: 'white'}}>Publish</Button>
+                <Button onClick={() => savePost()} variant="contained" style={{ position: "relative" }}color="primary">Publish</Button>
             </div>
         </FormControl>
 
@@ -234,7 +242,7 @@ const CreateView = () => {
 
             <div className={classes.group}>
             <div>                
-            <InputLabel id="category" style={{maginTop: 50}}>Categories</InputLabel>
+            <InputLabel id="category" >Categories</InputLabel>
                 {/* <Select
                 labelId="category"
                 id="categories"
@@ -272,11 +280,11 @@ const CreateView = () => {
                 </Select> */}
 
                 <TextField
-                labelId="category"
+                labelid="category"
                 // id=""
                 name="categories"
                 value={post.categories}
-                defaultValue="Latest"
+                // defaultValue="Latest"
                 style={{width:"100%"}}  
                 // label="branch"
                 inputlableprops={{
@@ -289,15 +297,32 @@ const CreateView = () => {
                 </div>
 
             
-            {/* <div className={classes.group}> */}
+            <div>                
+            <InputLabel id="mini" >Project Type</InputLabel>
+            <TextField
+                labelid="mini"
+                // id=""
+                name="mini"
+                value={post.mini}
+                // defaultValue="Mini"
+                style={{width:"100%"}}  
+                inputlableprops={{
+                    shrink: true,
+                }}
+                className={classes.select}
+                onChange={(e)=>handleChange(e)}
+            >
+            </TextField>
+            </div>
+
             <div>                
             <InputLabel id="branch" >Branch</InputLabel>
             <TextField
-                labelId="branch"
+                labelid="branch"
                 // id=""
                 name="branch"
                 value={post.branch}
-                defaultValue="CSE"
+                // defaultValue="CSE"
                 style={{width:"100%"}}  
                 // label="branch"
                 inputlableprops={{
@@ -306,18 +331,13 @@ const CreateView = () => {
                 className={classes.select}
                 onChange={(e)=>handleChange(e)}
             >
-                {/* <MenuItem value={"cse"}>CSE</MenuItem>
-                <MenuItem value={"it"}>IT</MenuItem>
-                <MenuItem value={"etc"}>ETC</MenuItem>
-                <MenuItem value={"mech"}>Mech</MenuItem>
-                <MenuItem value={"electrical"}>Electrical</MenuItem> */}
             </TextField>
             </div>
 
             <div>                
             <InputLabel id="year">Year</InputLabel>
             <TextField
-                labelId="year"
+                labelid="year"
                 // label="Year"
                 type="number"
                 inputlableprops={{

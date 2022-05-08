@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Box, Typography, makeStyles, Chip } from "@material-ui/core";
+import { Box, Typography, makeStyles } from "@material-ui/core";
 import { Edit , Delete } from "@material-ui/icons";
 
 //service
@@ -72,7 +72,7 @@ const DetailView = ({ match }) => {
     useEffect(() => {
         const fetchData = async() => {
             let data = await getPost(match.params.id);
-            console.log(data);
+            // console.log(data);
             setPost(data);
         }
         fetchData();
@@ -93,10 +93,12 @@ const DetailView = ({ match }) => {
             alt="Detailed Post"
             className={classes.image}
             />
-            {user && <Box className={classes.icons}>
-                <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
-                <Delete onClick={() => deleteBlog()} className={classes.icon} color="error"/>
-            </Box>}
+            {user && 
+                <Box className={classes.icons}>
+                    <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
+                    <Delete onClick={() => deleteBlog()} className={classes.icon} color="error"/>
+                </Box>
+            }
             {/* <Box className={classes.icons}>
                 <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
                 <Delete onClick={() => deleteBlog()} className={classes.icon} color="error"/>
@@ -106,17 +108,17 @@ const DetailView = ({ match }) => {
 
             <Box className={classes.subheading}>
                 
-                    <Typography>Categories: <Chip label={post.categories} /></Typography>
+                <Typography>Categories: <span>{post.categories}</span></Typography>
                 
                 <Typography style={{marginLeft:'auto'}}>{new Date(post.createdDate).toDateString()}</Typography>
             </Box>
                 
             <Typography className={classes.subheading}>{post.branch}</Typography>
             <Typography className={classes.subheading}>{post.year}</Typography>                           
-            <Typography className={classes.subheading}>Creators: <Chip label={post.creators} variant='medium'/></Typography>
+            <Typography className={classes.subheading}>Creators: <span>{post.creators} </span></Typography>
                 
 
-            <Typography className={classes.subheading}>Description(Problem Statement and Solution): </Typography>
+            <Typography className={classes.subheading}>Project Description(Problem Statement and Solution): </Typography>
             <Typography className={classes.description}>{post.description}</Typography>
 
             <Typography className={classes.subheading}>Code/Github Link: <span href={post.code} style={{color:'#000000'}}>{post.code}</span></Typography>
