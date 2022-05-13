@@ -13,12 +13,20 @@
 
 ## Problem Description
 
-<hr>
-<hr>
+> Students are unaware of project that are already built.
+Difficulties in selecting innovative and unique ideas. 
+Project idea will get rejected if it is already done.
+Again they need to put lots of efforts to find different project ideas.
+
+
 
 ## Solution
+> We brought all project works and details on single platform -
+To avoid project ideas from getting repeated, 
+To take up unique and innovative project works,
+To provide common knowledge platform for peer learning.
 
-<hr>
+
 <hr>
 <br>
 
@@ -113,5 +121,6 @@ cd ../server
 ## Team
 
 [![Pranay Kharabe](https://avatars1.githubusercontent.com/u/68046838?v=3&s=144)](https://github.com/pranay202)
+[![Samyak Shambharkar](https://avatars1.githubusercontent.com/u/86425573?v=3&s=144)](https://github.com/samyakshambharkar)
 
-MIT © [Pranay Kharabe ](https://github.com/pranay202)
+Copyright © 2022 [Pranay Kharabe ](https://github.com/pranay202)

@@ -5,20 +5,21 @@ import Loading from "../Loading";
 
 const useStyles = makeStyles({
     component: {
-        background: '#001010',
+        background: '#062925',
         color: '#ffff',
         display: 'flex',
         // justifyContent: 'space-between',
         flexDirection:"row",
-        opacity: 0.85
+        // opacity: 0.9
     },
 
     link: {
         textDecoration : 'none',
         color: 'inherit',
         "&.active": {
-            background:'black',
-            color:'white',
+            background:'#3E2C41',
+            borderRadius: '8px',
+            padding:15
         },
     },
 
@@ -102,12 +103,12 @@ function Navbar() {
                     <SearchIcon />
                     </SearchIconWrapper> */}
             <Toolbar className = {classes.search}>
-                    <input
+                    {/* <input
                     placeholder="Search…"
                     className={classes.searchInput}
                     inputprops={{ 'aria-label': 'search' }}
                     // onChange={(e) => setSearch(e.target.value)}
-                    />
+                    /> */}
             </Toolbar>
 
             <Toolbar className = {classes.logout}>

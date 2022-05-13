@@ -369,6 +369,7 @@ const CreateView = () => {
                 name='description' 
                 value={post.description}
             />
+            
             <div className={classes.group}>
             <TextareaAutosize
                 onChange={(e)=>handleChange(e)}

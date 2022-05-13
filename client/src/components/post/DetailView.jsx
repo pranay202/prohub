@@ -72,7 +72,7 @@ const DetailView = ({ match }) => {
     useEffect(() => {
         const fetchData = async() => {
             let data = await getPost(match.params.id);
-            // console.log(data);
+            console.log(data);
             setPost(data);
         }
         fetchData();
@@ -108,13 +108,13 @@ const DetailView = ({ match }) => {
 
             <Box className={classes.subheading}>
                 
-                <Typography>Categories: <span>{post.categories}</span></Typography>
+                {/* <Typography>Categories: <span>{post.categories}</span></Typography> */}
                 
-                <Typography style={{marginLeft:'auto'}}>{new Date(post.createdDate).toDateString()}</Typography>
+                {/* <Typography style={{marginLeft:'auto'}}>{new Date(post.createdDate).toDateString()}</Typography> */}
             </Box>
                 
-            <Typography className={classes.subheading}>{post.branch}</Typography>
-            <Typography className={classes.subheading}>{post.year}</Typography>                           
+            {/* <Typography className={classes.subheading}>{post.branch}</Typography> */}
+            {/* <Typography className={classes.subheading}>{post.year}</Typography>                            */}
             <Typography className={classes.subheading}>Creators: <span>{post.creators} </span></Typography>
                 
 
