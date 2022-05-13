@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { Button,makeStyles, Table,TableRow, TableBody, TableCell, TableHead } from '@material-ui/core';
+import { Button,makeStyles, Table,TableRow, TableBody, TableCell, TableHead, Container } from '@material-ui/core';
 import {categoriesData, yearsData, branchesData, typeData} from "../../constants/data.js"
-import { Link } from "react-router-dom";
-import Posts from './Posts.jsx';
+import { Link, NavLink } from "react-router-dom";
+import Sticky from "wil-react-sticky";
+// import { NavLink } from 'react-bootstrap';
+// import Posts from './Posts.jsx';
 
+//icons
+import {FiChevronDown as Down} from "react-icons/fi";
 
 const useStyles = makeStyles({
     create: {
@@ -18,14 +22,28 @@ const useStyles = makeStyles({
     },
     table: {
         border: '1px solid rgba(224, 160, 221, 1)',
+        marginTop: 30
     },
     link: {
         textDecoration: 'none',
         color: 'inherit',
+        "&:hover": {
+            fontWeight: 'bold',
+        },
+        "&.active": {
+            fontWeight: 'semibold',
+        },
     },
     toggler: {
         cursor: "pointer",
-        backgroundColor: '#8dcff4',
+        fontWeight: 'bold',
+        // backgroundColor: '#8dcff4'
+        // backgroundColor: 'rgb(7, 1, 77, 0.8)',
+        color: '#26282B',
+        opacity: 0.8,
+        "&:hover": {
+            color: 'black',
+        },
 
     }
 });
@@ -57,47 +75,48 @@ const Categories = () => {
     // }
     return (
         <>
+        <Container>
+        <Sticky
+            offsetTop={60}
+            stickyEnableRange={[768, Infinity]}
+        >
             {user && <Link to={`/projects/create`} className={ classes.link }><Button varient="outlined" className={ classes.create }>New Project</Button></Link> }
             {/* <Link to={`/projects/create`} className={ classes.link }><Button varient="outlined" className={ classes.create }>New Project</Button></Link> */}
 
             <Table className={classes.table}>
-                <TableHead>
+                {/* <TableHead> */}
                     <TableRow>
-                        <TableCell>
-                            <Link to={'/projects/'} className={classes.link}>
+                        <TableCell colSpan={2}>
+                            <NavLink to={'/projects/'} className={classes.link}>
                                 All Projects
-                            </Link>
+                            </NavLink>
                         </TableCell>
                     </TableRow>
-                </TableHead>
+                {/* </TableHead> */}
                 <TableBody>
-                        <TableRow>
-                {
-                    categoriesData.map(categories => (
-                            <TableCell>
-                                <Link to={`/projects/?categories=${categories}`}  className={classes.link}>
+                        {categoriesData.map(categories => (
+                    <TableRow>
+                            <TableCell colSpan={2}>
+                                <NavLink to={`/projects/?categories=${categories}`}  className={classes.link}>
                                     {categories}
-                                </Link>
+                                </NavLink>
 
                                 {/* <Button  onClick={() => filterResult('Software')} > Software </Button> */}
 
                             </TableCell>                            
-
-                      
-                    ))
-                }
-                        </TableRow>
+                    </TableRow>
+                        ))}
                 </TableBody>
                 
                 <TableBody>
-                <TableRow> <TableCell colSpan={2} align="center" className={classes.toggler} onClick={toggle3}>Project Type</TableCell></TableRow>
+                <TableRow> <TableCell colSpan={2}  className={classes.toggler} onClick={toggle3}>Project Type <span className={classes.icon}><Down/></span> </TableCell></TableRow>
                 <TableRow>
                 { opened &&
                     typeData.map(mini => (
                             <TableCell>
-                                <Link to={`/projects/?mini=${mini}`}  className={classes.link}>
+                                <NavLink to={`/projects/?mini=${mini}`}  className={classes.link}>
                                     {mini}
-                                </Link>
+                                </NavLink>
 
                                 {/* <Button  onClick={() => filterResult('Software')} > Software </Button> */}
 
@@ -110,14 +129,14 @@ const Categories = () => {
                 </TableBody>
 
                 <TableBody>
-                <TableRow> <TableCell colSpan={2} align="center" className={classes.toggler} onClick={toggle}>Year</TableCell></TableRow>
+                <TableRow> <TableCell colSpan={2}  className={classes.toggler} onClick={toggle}>Year <span className={classes.icon}><Down/></span> </TableCell></TableRow>
                 { isOpened &&
                     yearsData.map(year => (
                         <TableRow>
                             <TableCell>
-                                <Link to={`/projects/?year=${year}`}  className={classes.link}>
+                                <NavLink to={`/projects/?year=${year}`}  className={classes.link}>
                                     {year}
-                                </Link>
+                                </NavLink>
 
                                 {/* <Button  onClick={() => filterResult('Software')} > Software </Button> */}
 
@@ -129,14 +148,14 @@ const Categories = () => {
                 }
                 </TableBody>
                 <TableBody>
-                <TableRow> <TableCell colSpan={2} align="center" className={classes.toggler} onClick={toggle2}>Branch</TableCell></TableRow>
+                <TableRow> <TableCell colSpan={2}  className={classes.toggler} onClick={toggle2}>Branch <span className={classes.icon}><Down/></span> </TableCell></TableRow>
                 { isOpen && (
                     branchesData.map(branch => (
                         <TableRow>
                             <TableCell>
-                                <Link to={`/projects/?branch=${branch}`}  className={classes.link}>
+                                <NavLink to={`/projects/?branch=${branch}`}  className={classes.link}>
                                     {branch}
-                                </Link>
+                                </NavLink>
 
                                 {/* <Button  onClick={() => filterResult('Software')} > Software </Button> */}
 
@@ -147,7 +166,9 @@ const Categories = () => {
                     ))
                 )}
                 </TableBody>
-            </Table>       
+            </Table>  
+            </Sticky>     
+        </Container>
         </>
     )
 }

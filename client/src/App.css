@@ -1,4 +1,9 @@
 
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
 .App {
   text-align: center;
 }

@@ -1,5 +1,6 @@
 import { Box } from "@material-ui/core";
 import React from "react";
+import "./App.css";
 
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 // Components
@@ -44,6 +45,7 @@ function App() {
         <Route exact path='/about' element={<About />} />
         <Route exact path='/contact' element={<Contact />} />
         <Route exact path='/projects/details/:id' element={<DetailView />} />
+        {/* <Route exact path={`${/projects/}details/:id`} element={<DetailView />} /> */}
         <Route exact path='/projects/create' element={<CreateView />} />
         <Route exact path='/projects/update/:id' element={<UpdateView />} />
       </Routes>

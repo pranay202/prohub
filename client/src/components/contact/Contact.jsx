@@ -41,7 +41,7 @@ function Contact() {
                             <div className="icon"><Map/></div>
                             <div className="text">
                                 <h3>Address</h3>
-                                <p>SBJITMR, Yerla,<br/>Savner Road, Nagpur</p>
+                                <p>SBJITMR, Yerla,<br/>Saoner Road, Nagpur</p>
                             </div>
                         </div>
 
@@ -50,7 +50,7 @@ function Contact() {
                             <div className="text">
                                 <h3>Phone</h3>
                                 <p>+91 9011694130</p>
-                                <p>0712-475-6094</p>
+                                <p>+91 8855953408</p>
                             </div>
                         </div>
 
@@ -58,7 +58,7 @@ function Contact() {
                             <div className="icon"><Mail/></div>
                             <div className="text">
                                 <h3>Email</h3>
-                                <p>prohub@sbjit.edu.in</p>
+                                <p>pranaykharabe20@gmail.com</p>
                             </div>
                         </div>
                     </div>
