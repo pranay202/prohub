@@ -63,11 +63,23 @@ const Login = () => {
 				<div className={styles.right}>
 					<h1>Students</h1>
 					<h2>Login Here</h2>
-					<Link to="/home">
-						<button type="button" className={styles.white_btn}>
-							Login
-						</button>
-					</Link>
+					<form className={styles.form_container} onSubmit={handleSubmit}>
+						{/* <input
+							type="email"
+							placeholder="Email"
+							name="email"
+							onChange={handleChange}
+							value={data.email}
+							required
+							className={styles.input}
+						/> */}
+						<Link to="/home">
+							{error && <div className={styles.error_msg}>{error}</div>}
+							<button type="button" className={styles.white_btn}>
+								Login
+							</button>
+						</Link>
+					</form>
 				</div>
 			</div>
 		</div>

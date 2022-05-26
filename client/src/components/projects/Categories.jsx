@@ -24,6 +24,11 @@ const useStyles = makeStyles({
         border: '1px solid rgba(224, 160, 221, 1)',
         marginTop: 30
     },
+    head: {
+        backgroundColor: 'rgba(224, 1, 221, 1)',
+        color: 'white',
+        fontSize: 17
+    },
     link: {
         textDecoration: 'none',
         color: 'inherit',
@@ -84,7 +89,14 @@ const Categories = () => {
             {/* <Link to={`/projects/create`} className={ classes.link }><Button varient="outlined" className={ classes.create }>New Project</Button></Link> */}
 
             <Table className={classes.table}>
-                {/* <TableHead> */}
+                <TableHead>
+                    <TableRow>
+                        <TableCell size="small" className={classes.head}>
+                             Categories
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     <TableRow>
                         <TableCell colSpan={2}>
                             <NavLink to={'/projects/'} className={classes.link}>
@@ -92,7 +104,8 @@ const Categories = () => {
                             </NavLink>
                         </TableCell>
                     </TableRow>
-                {/* </TableHead> */}
+                </TableBody>
+
                 <TableBody>
                         {categoriesData.map(categories => (
                     <TableRow>
