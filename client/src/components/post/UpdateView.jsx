@@ -18,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
         height: '50vh',
         objectFit: 'cover'
     },
+    addIcon: {
+        cursor: 'pointer',
+    },
     title: {
         marginTop: 10,
         display: 'flex',
@@ -28,14 +31,64 @@ const useStyles = makeStyles((theme) => ({
         margin: '0 30px',
         fontSize: 25
     },
+    
     textarea: {
         width: '100%',
-        border: 'none',
-        marginTop: 50,
+        // border: 'none',
+        marginTop: 20,
+        padding: '10px',
+        paddingLeft: '20px',
+        border: '2px solid blueGrey',
+        borderRadius: 4,
         fontSize: 18,
         '&:focus-visible': {
             outline: 'none'
         }
+    },
+    technology:{
+        margin: '0px 0px',
+        marginTop: 50,
+        padding: '0px 5px',
+        display: 'flex',
+        flex: 1,
+        fontSize: 18,
+        '&:focus-visible': {
+            outline: 'none'
+        }
+    },
+    select:{
+        cursor: 'pointer',
+        width: '33%',
+        border: 'none',
+        marginLeft: 0,
+        marginTop: 10,
+        paddingTop: 20,
+        // paddingLeft: '20px',
+        // border: '2px solid blueGrey',
+
+    },
+
+    chip: {
+        width:"100%"
+    },
+
+    group: {
+
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        gap:20,
+        marginTop:20    
+    },
+    error_msg: {
+        width: 370,
+        padding: 15,
+        margin: "5px 0px",
+        fontSize: 14,
+        backgroundColor: "#f34646",
+        color: "#fff",
+        borderRadius: 5,
+        textAlign: "center"
     }
 }));
 

@@ -44,9 +44,9 @@ function App() {
         <Route exact path='/projects' element={<Projects />} />
         <Route exact path='/about' element={<About />} />
         <Route exact path='/contact' element={<Contact />} />
+        <Route exact path='/projects/create' element={<CreateView />} />
         <Route exact path='/projects/details/:id' element={<DetailView />} />
         {/* <Route exact path={`${/projects/}details/:id`} element={<DetailView />} /> */}
-        <Route exact path='/projects/create' element={<CreateView />} />
         <Route exact path='/projects/update/:id' element={<UpdateView />} />
       </Routes>
       </Box>

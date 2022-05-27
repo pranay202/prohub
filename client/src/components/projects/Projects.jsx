@@ -1,20 +1,12 @@
 import React from 'react';
 import Banner from './Banner';
 import Posts from './Posts';
-import { Grid, makeStyles } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from "../../theme"
 import Categories from './Categories';
 
-const useStyles = makeStyles({
-    category: {
-        position: 'sticky',
-    }
-})
-
 function Projects() {
-
-    const classes = useStyles();
 
     return (
         <>

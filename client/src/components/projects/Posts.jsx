@@ -9,7 +9,7 @@ import Post from './Post';
 
 //posts cards
 const Posts = () => {
-    const [posts, setPosts] = useState([]);
+    const [posts, getPosts] = useState([]);
     const { search } = useLocation();
     // let Posts = [1,2,3,4,5,6,7,8,9,10,12,13];
 
@@ -17,7 +17,7 @@ const Posts = () => {
         const fetchData = async () => {
             let data = await getAllPosts(search);
             console.log(data);
-            setPosts(data);
+            getPosts(data);
         }
         fetchData();
     },[search]);
