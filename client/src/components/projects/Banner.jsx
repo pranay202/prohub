@@ -5,7 +5,7 @@ const useStyles = makeStyles({
     image: {
         background: `url(${'https://images.pexels.com/photos/1714208/pexels-photo-1714208.jpeg'}) center/55% repeat-x #000`,
         width: '100%',
-        height: '40vh',
+        height: '50vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',

@@ -5,12 +5,13 @@ import Loading from "../Loading";
 
 const useStyles = makeStyles({
     component: {
-        background: '#062925',
+        background: '#000',
+        backdrop:'blur(5px)',
         color: '#ffff',
         display: 'flex',
         // justifyContent: 'space-between',
         flexDirection:"row",
-        // opacity: 0.9
+        opacity: 0.9
     },
 
     link: {
@@ -19,7 +20,7 @@ const useStyles = makeStyles({
         "&.active": {
             background:'#3E2C41',
             borderRadius: '8px',
-            padding:15
+            padding:"5px 10px"
         },
     },
 
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
         // justifyContent: 'flex-start',
         width: "30%",
         '& > *': {
-            padding: 20,
+            padding: "0 20px",
             cursor: 'pointer',
         }
     },

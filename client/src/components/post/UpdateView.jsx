@@ -1,7 +1,7 @@
 import React, { useState, useEffect }from 'react';
 import { Box, makeStyles, FormControl, InputBase, TextareaAutosize, Button, TextField, InputLabel} from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 //service
 import { getPost, updatePost } from "../../service/api"
@@ -101,16 +101,17 @@ const initialValues = {
     createdDate: new Date()
 }
 
-const UpdateView = ({ match }) => {
+const UpdateView = () => {
     const classes = useStyles();
     const url = "https://images.unsplash.com/photo-1543128639-4cb7e6eeef1b?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGFwdG9wJTIwc2V0dXB8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80";
     const navigate = useNavigate();
+    const {id} = useParams();
 
     const [post, setPost] = useState(initialValues);
 
     useEffect(() => {
         const fetchData = async () => {
-            let data = await getPost(match.params.id);
+            let data = await getPost(id);
             console.log(data);
             setPost(data);
         }
@@ -122,8 +123,8 @@ const UpdateView = ({ match }) => {
     }
 
     const updateBlog = async () => {
-        await updatePost(match.params.id, post);
-        navigate(`/details/${match.params.id}`);
+        await updatePost(id, post);
+        navigate(`/details/${id}`);
     }
 
     return (
@@ -156,7 +157,8 @@ const UpdateView = ({ match }) => {
             minRows={2}
             name='technology' 
             placeholder="Technologies Used" 
-            className={classes.textarea}   
+            className={classes.textarea} 
+            value= {post.technology}  
             />
 
             <div className={classes.group}>
@@ -279,7 +281,8 @@ const UpdateView = ({ match }) => {
             minRows={2}
             name='creators' 
             placeholder="Creators" 
-            className={classes.textarea}   
+            className={classes.textarea} 
+            value={post.creators}  
             />
 
             <TextareaAutosize
