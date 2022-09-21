@@ -122,5 +122,6 @@ cd ../server
 
 [![Pranay Kharabe](https://avatars1.githubusercontent.com/u/68046838?v=3&s=144)](https://github.com/pranay202)
 [![Samyak Shambharkar](https://avatars1.githubusercontent.com/u/86425573?v=3&s=144)](https://github.com/samyakshambharkar)
+[![Ruchika Parshionikar](https://avatars1.githubusercontent.com/u/86425573?v=3&s=144)](https://github.com/samyakshambharkar)
 
-Copyright © 2022 [Pranay Kharabe ](https://github.com/pranay202)
+Copyright © 2022 [Prohub](https://github.com/pranay202)
