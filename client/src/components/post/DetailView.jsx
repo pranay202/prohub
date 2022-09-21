@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Box, Typography, makeStyles, Chip } from "@material-ui/core";
+import { Box, Typography, makeStyles, Chip, Button } from "@material-ui/core";
 import { Edit , Delete } from "@material-ui/icons";
 
 //service
@@ -19,6 +19,32 @@ const useStyles = makeStyles((theme) => ({
         width: '100%',
         height: '50vh',
         objectFit: 'cover'
+    },
+    imgGroup: {
+        position: 'relative'
+    },
+    buttons: {
+        display: 'flex',
+    },
+    btnc: {
+        position: 'absolute',
+        backgroundColor: 'black',
+        "&:hover": {
+            backgroundImage: "linear-gradient(100deg, rgb(0, 152, 235) 1.64%, rgb(150, 45, 227) 100%)",
+        },
+        // left:'0px',
+        top: '320px',
+        color: '#f6f6f6'
+    },
+    btnd: {
+        position: 'absolute',
+        backgroundColor: '#f6f6f6',
+        "&:hover": {
+            backgroundImage: "linear-gradient(100deg, rgb(0, 152, 235) 1.64%, rgb(150, 45, 227) 100%)",
+        },
+        top:'275px',
+        color: 'black'
+        
     },
     icons: {
         float: 'right'
@@ -65,7 +91,9 @@ const useStyles = makeStyles((theme) => ({
     cat: {
         display:'flex',
         justifyContent: 'space-between',
-    }
+    },
+
+
 }));
 
 const DetailView = () => {
@@ -100,11 +128,21 @@ const DetailView = () => {
     return (
         <>
         <Box className={classes.container}>
+        <div className={classes.imgGroup}>
             <img 
             src={post.picture || url} 
             alt="Detailed Post"
             className={classes.image}
-        />
+            />
+        <div className={classes.buttons}>
+        <Button href={post.btnc} target="_blank" rel="noreferrer" className={classes.btnc}>Code Link (Github)</Button>
+            
+        <Button className={classes.btnd}>
+            Demo Link
+                <a href={post.deployment} target="_blank" rel="noreferrer">{post.deployment}</a>
+        </Button>
+        </div>
+        </div>
             {user && 
                 <Box className={classes.icons}>
                     <Link to={`/projects/update/${post._id}`}><Edit className={classes.icon}/></Link>
@@ -125,19 +163,21 @@ const DetailView = () => {
             <Typography className={classes.subheading}>{post.year}</Typography>  
             </Box> */}
 
-            <Typography className={classes.subheading}>Creators: <span>{post.creators} </span></Typography>               
+            <Typography className={classes.subheading}>Creators: <span className={classes.description}>{post.creators} </span></Typography>               
 
             <Typography className={classes.subheading}>Project Description(Problem Statement and Solution): </Typography>
             <Typography className={classes.description}>{post.description}</Typography>
 
-            <Typography className={classes.subheading}>Code Link (Github): <a href={post.code} target="_blank" rel="noreferrer">{post.code}</a></Typography>
+            {/* <Button href={post.btn} target="_blank" rel="noreferrer" className={classes.subheading}>Code Link (Github)</Button>
             <Typography className={classes.subheading}>
-            Demo Link: 
+            Demo Link:
                 <a href={post.deployment} target="_blank" rel="noreferrer">{post.deployment}</a>
-            </Typography>
+            </Typography> */}
         </Box>
         </>
     )
 };
+
+// We have to make a footer of made with ❣️ by creators
 
 export default DetailView;

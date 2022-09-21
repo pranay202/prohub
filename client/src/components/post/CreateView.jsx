@@ -2,11 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import { Box, makeStyles, FormControl, TextareaAutosize, Button, InputLabel, TextField, InputBase } from "@material-ui/core";
 import { AddCircle } from "@material-ui/icons";
-// import { categoriesData } from '../../constants/data';
 
 // Fetching service from backend
 import { createPost, uploadFile } from '../../service/api';
-// import { blueGrey } from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     container: {
@@ -68,9 +66,6 @@ const useStyles = makeStyles((theme) => ({
         marginLeft: 0,
         marginTop: 10,
         paddingTop: 20,
-        // paddingLeft: '20px',
-        // border: '2px solid blueGrey',
-
     },
 
     chip: {
