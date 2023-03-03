@@ -31,7 +31,7 @@ To provide common knowledge platform for peer learning.
 <br>
 
 ## Demo
-Here is a working Demo : https://Prohub.herokuapp.com/
+Here is a working Demo : https://prohub-pranay202.vercel.app/
 
 ## Built with 
 
